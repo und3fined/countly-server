@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-cp -f $DIR/../../plugins/plugins.default.json $DIR/../../plugins/plugins.ee.json
+cp -f "$DIR/../../plugins/plugins.default.json" "$DIR/../../plugins/plugins.ee.json"
 
 if [ -f "$DIR/../../plugins/plugins.ee.json" ]; then
 
