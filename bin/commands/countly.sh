@@ -128,7 +128,7 @@ countly_upgrade (){
         )
     elif [ "$1" == "auto" ]
     then
-        if UPGRADE=$(nodejs "$DIR/../scripts/checking_versions.js");
+        if UPGRADE=$(/home/countly/.local/bin/nodejs "$DIR/../scripts/checking_versions.js");
         then
             run_upgrade "$UPGRADE" "$2" "$y";
         else
@@ -140,7 +140,7 @@ countly_upgrade (){
         then
             if [ "$2" == "fs" ] || [ "$2" == "db" ]
             then
-                if UPGRADE=$(nodejs "$DIR/../scripts/checking_versions.js" "$3" "$4")
+                if UPGRADE=$(/home/countly/.local/bin/nodejs "$DIR/../scripts/checking_versions.js" "$3" "$4")
                 then
                     run_upgrade "$UPGRADE" "$2" "$y";
                 else
@@ -148,7 +148,7 @@ countly_upgrade (){
                 fi
             elif [ $# -ge 3 ]
             then
-                if UPGRADE=$(nodejs "$DIR/../scripts/checking_versions.js" "$2" "$3")
+                if UPGRADE=$(/home/countly/.local/bin/nodejs "$DIR/../scripts/checking_versions.js" "$2" "$3")
                 then
                     run_upgrade "$UPGRADE" "$2" "$y";
                 else
@@ -165,11 +165,11 @@ countly_upgrade (){
     then
         if [ $# -eq 2 ] && [ "$2" == "auto" ]
         then
-            nodejs "$DIR/../scripts/checking_versions.js";
+            /home/countly/.local/bin/nodejs "$DIR/../scripts/checking_versions.js";
             echo "";
         elif [ $# -eq 3 ]
         then
-            nodejs "$DIR/../scripts/checking_versions.js" "$2" "$3";
+            /home/countly/.local/bin/nodejs "$DIR/../scripts/checking_versions.js" "$2" "$3";
             echo "";
         else
             echo "Provide upgrade version in formats:";
@@ -237,7 +237,7 @@ countly_mark_version (){
     countly_root ;
     if [ "$1" == "fs" ] || [ "$1" == "db" ]
     then
-        UPGRADE=$(nodejs "$DIR/../scripts/version_marks.js" write_"$1" "$2");
+        UPGRADE=$(/home/countly/.local/bin/nodejs "$DIR/../scripts/version_marks.js" write_"$1" "$2");
     elif [ "$1" == "help" ]
     then
         echo "countly mark_version usage:"
@@ -251,7 +251,7 @@ countly_compare_version (){
     countly_root ;
     if [ "$1" == "fs" ] || [ "$1" == "db" ]
     then
-        UPGRADE=$(nodejs "$DIR/../scripts/version_marks.js" compare_"$1" "$2");
+        UPGRADE=$(/home/countly/.local/bin/nodejs "$DIR/../scripts/version_marks.js" compare_"$1" "$2");
         echo "$UPGRADE";
     elif [ "$1" == "help" ]
     then
@@ -610,7 +610,7 @@ elif [ -f "$DIR/scripts/$NAME.sh" ]; then
     bash "$DIR/scripts/$NAME.sh" "$@";
 elif [ -f "$DIR/scripts/$NAME.js" ]; then
     shift;
-    nodejs "$DIR/scripts/$NAME.js" "$@";
+    /home/countly/.local/bin/nodejs "$DIR/scripts/$NAME.js" "$@";
 elif [ -d "$DIR/../../plugins/$NAME" ] && [ -f "$DIR/../../plugins/$NAME/scripts/$SCRIPT.sh" ]; then
     shift;
     shift;
@@ -618,7 +618,7 @@ elif [ -d "$DIR/../../plugins/$NAME" ] && [ -f "$DIR/../../plugins/$NAME/scripts
 elif [ -d "$DIR/../../plugins/$NAME" ] && [ -f "$DIR/../../plugins/$NAME/scripts/$SCRIPT.js" ]; then
     shift;
     shift;
-    nodejs "$DIR/../../plugins/$NAME/scripts/$SCRIPT.js" "$@";
+    /home/countly/.local/bin/nodejs "$DIR/../../plugins/$NAME/scripts/$SCRIPT.js" "$@";
 else
     echo "";
     echo "countly usage:";
