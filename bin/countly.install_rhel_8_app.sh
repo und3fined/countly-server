@@ -95,10 +95,10 @@ cd "$DIR/.." && grunt dist-all
 #countly thp
 
 # after install call
-countly check after install
+sudo countly check after install
 
 #finally start countly api and dashboard
-countly start
+sudo countly start
 
 bash "$DIR/scripts/done.sh";
 
