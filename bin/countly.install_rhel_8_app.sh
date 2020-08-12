@@ -57,7 +57,7 @@ if [ ! -f "$DIR/../plugins/plugins.json" ]; then
 fi
 
 if [ ! -f "/etc/timezone" ]; then
-    sudo echo "Etc/UTC" > /etc/timezone
+    # sudo echo "Etc/UTC" > /etc/timezone
 fi
 
 #install plugins
