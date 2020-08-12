@@ -10,6 +10,14 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 bash "$DIR/scripts/logo.sh";
 
+
+set +e
+NODE_JS_CMD=$(which nodejs)
+set -e
+if [[ -z "$NODE_JS_CMD" ]]; then
+	ln -s "$(which node)" $HOME/.local/bin/nodejs
+fi
+
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
 sudo dnf install -y python2 python3 python2-devel python3-devel
 
