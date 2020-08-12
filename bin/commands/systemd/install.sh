@@ -24,7 +24,7 @@ if [ -n "$(command -v apt-get)" ]; then
 fi
 
 #reload services
-systemctl daemon-reload
+sudo systemctl daemon-reload
 
 #enable services on boot
-systemctl enable countly.service
+sudo systemctl enable countly.service
