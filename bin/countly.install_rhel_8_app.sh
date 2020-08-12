@@ -40,7 +40,7 @@ if [[ "$GLIBC_VERSION" != "2.25" ]]; then
     (cd "$DIR/.." && npm install argon2 --build-from-source)
 fi
 
-cp "$DIR/../frontend/express/public/javascripts/countly/countly.config.sample.js" "$DIR/../frontend/express/public/javascripts/countly/countly.config.js"
+yes | cp "$DIR/../frontend/express/public/javascripts/countly/countly.config.sample.js" "$DIR/../frontend/express/public/javascripts/countly/countly.config.js"
 
 # sed -e "s/Defaults requiretty/#Defaults requiretty/" /etc/sudoers > /etc/sudoers2
 # mv /etc/sudoers /etc/sudoers.bak
@@ -54,15 +54,15 @@ sudo yum install numactl -y
 
 #create configuration files from samples
 if [ ! -f "$DIR/../api/config.js" ]; then
-	cp "$DIR/../api/config.sample.js" "$DIR/../api/config.js"
+	yes | cp "$DIR/../api/config.sample.js" "$DIR/../api/config.js"
 fi
 
 if [ ! -f "$DIR/../frontend/express/config.js" ]; then
-	cp "$DIR/../frontend/express/config.sample.js" "$DIR/../frontend/express/config.js"
+	yes | cp "$DIR/../frontend/express/config.sample.js" "$DIR/../frontend/express/config.js"
 fi
 
 if [ ! -f "$DIR/../plugins/plugins.json" ]; then
-	cp "$DIR/../plugins/plugins.default.json" "$DIR/../plugins/plugins.json"
+	yes | cp "$DIR/../plugins/plugins.default.json" "$DIR/../plugins/plugins.json"
 fi
 
 # if [ ! -f "/etc/timezone" ]; then
