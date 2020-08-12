@@ -17,7 +17,7 @@ else
 	INITSYS="docker" 
 fi
 
-bash "$DIR/commands/$INITSYS/install.sh"
+sudo bash "$DIR/commands/$INITSYS/install.sh"
 ln -sf "$DIR/commands/$INITSYS/countly.sh" "$DIR/commands/enabled/countly.sh"
 
 chmod +x "$DIR/commands/countly.sh"

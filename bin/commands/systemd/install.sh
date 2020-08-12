@@ -8,7 +8,7 @@ pkill -SIGTERM supervisord
 
 #create supervisor service script
 $HOME/.local/share/systemd/user
-(cat "$DIR/countly.service" ; echo "ExecStart=/usr/bin/supervisord --nodaemon --configuration $BINDIR/config/supervisord.conf") > $HOME/.local/share/systemd/user/countly.service
+(cat "$DIR/countly.service" ; echo "ExecStart=/usr/local/bin/supervisord --nodaemon --configuration $BINDIR/config/supervisord.conf") > /etc/systemd/system/countly.service
 
 if [ -n "$(command -v apt-get)" ]; then
     if [ ! -f /etc/systemd/system/mongod.service ]; then
@@ -24,7 +24,7 @@ if [ -n "$(command -v apt-get)" ]; then
 fi
 
 #reload services
-sudo systemctl daemon-reload
+systemctl daemon-reload
 
 #enable services on boot
-systemctl --user enable countly.service
+systemctl enable countly.service
