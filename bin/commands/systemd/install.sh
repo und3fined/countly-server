@@ -7,6 +7,7 @@ BINDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../.." && pwd )"
 pkill -SIGTERM supervisord
 
 #create supervisor service script
+$HOME/.local/share/systemd/user
 (cat "$DIR/countly.service" ; echo "ExecStart=/usr/bin/supervisord --nodaemon --configuration $BINDIR/config/supervisord.conf") > $HOME/.local/share/systemd/user/countly.service
 
 if [ -n "$(command -v apt-get)" ]; then
@@ -23,7 +24,7 @@ if [ -n "$(command -v apt-get)" ]; then
 fi
 
 #reload services
-systemctl daemon-reload
+sudo systemctl daemon-reload
 
 #enable services on boot
-systemctl enable countly.service
+systemctl --user enable countly.service
