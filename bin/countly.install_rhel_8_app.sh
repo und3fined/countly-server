@@ -17,10 +17,12 @@ dnf install -y python2 python3 python2-devel python3-devel
 pip3 install supervisor --ignore-installed meld3
 
 #install sendmail
+echo "install sendmail"
 dnf -y install sendmail
-service sendmail start
+systemctl restart sendmail
 
 #install grunt & npm modules
+echo "install grunt & npm modules..."
 ( cd "$DIR/.." ; npm install -g grunt-cli --unsafe-perm ; npm install --unsafe-perm )
 
 GLIBC_VERSION=$(ldd --version | head -n 1 | rev | cut -d ' ' -f 1 | rev)
