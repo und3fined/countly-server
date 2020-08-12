@@ -1,15 +1,9 @@
 #!/bin/bash
 set -e
 
-# if [[ $EUID -ne 0 ]]; then
-#    echo "Please execute Countly installation script with a superuser..." 1>&2
-#    exit 1
-# fi
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 bash "$DIR/scripts/logo.sh";
-
 
 set +e
 NODE_JS_CMD=$(which nodejs)
@@ -31,8 +25,8 @@ echo "install sendmail"
 # sudo systemctl restart sendmail
 
 #install grunt & npm modules
-echo "install grunt & npm modules..."
-npm install -g grunt-cli --unsafe-perm
+echo "install grunt pm2 & npm modules..."
+npm install -g grunt-cli pm2 --unsafe-perm
 ( cd "$DIR/.." && npm install --unsafe-perm )
 
 GLIBC_VERSION=$(ldd --version | head -n 1 | rev | cut -d ' ' -f 1 | rev)
