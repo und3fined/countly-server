@@ -15,7 +15,7 @@ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.r
 dnf install -y python2 python3 python2-devel python3-devel
 
 #yum install -y ShellCheck
-pip3 install supervisor --ignore-installed meld3
+# pip3 install supervisor
 
 #install sendmail
 echo "install sendmail"
