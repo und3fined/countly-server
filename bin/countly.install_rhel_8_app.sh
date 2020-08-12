@@ -8,6 +8,7 @@ fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+
 bash "$DIR/scripts/logo.sh";
 
 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
