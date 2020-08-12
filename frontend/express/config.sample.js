@@ -20,7 +20,7 @@ var countlyConfig = {
     * @property {object=} serverOptions - provide raw driver server options, used for all, single, mongos and replica set servers
     */
     mongodb: {
-        host: "localhost",
+        host: process.env.MONGODB_HOST || "localhost",
         db: "countly",
         port: 27017,
         max_pool_size: 10,
@@ -81,7 +81,7 @@ var countlyConfig = {
     */
     web: {
         port: 6001,
-        host: "localhost",
+        host: process.env.FRONTEND_HOST || "localhost",
         use_intercom: true,
         secure_cookies: false,
         track: "all",
