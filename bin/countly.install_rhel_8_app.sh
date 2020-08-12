@@ -1,34 +1,34 @@
 #!/bin/bash
 set -e
 
-if [[ $EUID -ne 0 ]]; then
-   echo "Please execute Countly installation script with a superuser..." 1>&2
-   exit 1
-fi
+# if [[ $EUID -ne 0 ]]; then
+#    echo "Please execute Countly installation script with a superuser..." 1>&2
+#    exit 1
+# fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-
 bash "$DIR/scripts/logo.sh";
 
-yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
-dnf install -y python2 python3 python2-devel python3-devel
+sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+sudo dnf install -y python2 python3 python2-devel python3-devel
 
-#yum install -y ShellCheck
-# pip3 install supervisor
+# sudo yum install -y ShellCheck
+# sudo pip3 install supervisor
 
 #install sendmail
 echo "install sendmail"
-# dnf -y install sendmail
-#systemctl restart sendmail
+# sudo dnf -y install sendmail
+# sudo systemctl restart sendmail
 
 #install grunt & npm modules
 echo "install grunt & npm modules..."
-( cd "$DIR/.." ; npm install -g grunt-cli --unsafe-perm ; npm install --unsafe-perm )
+npm install -g grunt-cli --unsafe-perm
+( cd "$DIR/.." && npm install --unsafe-perm )
 
 GLIBC_VERSION=$(ldd --version | head -n 1 | rev | cut -d ' ' -f 1 | rev)
 if [[ "$GLIBC_VERSION" != "2.25" ]]; then
-    (cd "$DIR/.." && sudo npm install argon2 --build-from-source)
+    (cd "$DIR/.." && npm install argon2 --build-from-source)
 fi
 
 cp "$DIR/../frontend/express/public/javascripts/countly/countly.config.sample.js" "$DIR/../frontend/express/public/javascripts/countly/countly.config.js"
@@ -38,10 +38,10 @@ cp "$DIR/../frontend/express/public/javascripts/countly/countly.config.sample.js
 # mv /etc/sudoers2 /etc/sudoers
 # chmod 0440 /etc/sudoers
 
-bash "$DIR/scripts/detect.init.sh"
+sudo bash "$DIR/scripts/detect.init.sh"
 
 #install numactl
-yum install numactl -y
+sudo yum install numactl -y
 
 #create configuration files from samples
 if [ ! -f "$DIR/../api/config.js" ]; then
