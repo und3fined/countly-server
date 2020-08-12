@@ -15,6 +15,7 @@ set +e
 NODE_JS_CMD=$(which nodejs)
 set -e
 if [[ -z "$NODE_JS_CMD" ]]; then
+    mkdir -p $HOME/.local/bin
 	ln -s "$(which node)" $HOME/.local/bin/nodejs
 fi
 
