@@ -19,8 +19,8 @@ pip3 install supervisor --ignore-installed meld3
 
 #install sendmail
 echo "install sendmail"
-dnf -y install sendmail
-systemctl restart sendmail
+# dnf -y install sendmail
+#systemctl restart sendmail
 
 #install grunt & npm modules
 echo "install grunt & npm modules..."
