@@ -56,14 +56,16 @@ if [ ! -f "$DIR/../plugins/plugins.json" ]; then
 	cp "$DIR/../plugins/plugins.default.json" "$DIR/../plugins/plugins.json"
 fi
 
-if [ ! -f "/etc/timezone" ]; then
-    # sudo echo "Etc/UTC" > /etc/timezone
-fi
+# if [ ! -f "/etc/timezone" ]; then
+#     # sudo echo "Etc/UTC" > /etc/timezone
+# fi
 
 #install plugins
+echo "install plugins..."
 node "$DIR/scripts/install_plugins"
 
 #get web sdk
+echo "get web sdk..." 
 countly update sdk-web
 
 # close google services for China area
@@ -77,6 +79,7 @@ else
 fi
 
 #compile scripts for production
+echo "compile scripts for production..."
 cd "$DIR/.." && grunt dist-all
 
 # disable transparent huge pages
