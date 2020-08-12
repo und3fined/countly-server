@@ -47,7 +47,7 @@ yes | cp "$DIR/../frontend/express/public/javascripts/countly/countly.config.sam
 # mv /etc/sudoers2 /etc/sudoers
 # chmod 0440 /etc/sudoers
 
-sudo bash "$DIR/scripts/detect.init.sh"
+bash "$DIR/scripts/detect.init.sh"
 
 #install numactl
 sudo yum install numactl -y
