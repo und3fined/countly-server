@@ -809,7 +809,7 @@ var pluginManager = function pluginManager() {
             }
             var cwd = eplugin ? eplugin.rfs : path.join(__dirname, plugin);
             if (!self.getConfig("api").offline_mode) {
-                exec('sudo npm install --unsafe-perm', {cwd: cwd}, function(error2) {
+                exec('npm install --unsafe-perm', {cwd: cwd}, function(error2) {
                     if (error2) {
                         errors = true;
                         console.log('error: %j', error2);
@@ -861,7 +861,7 @@ var pluginManager = function pluginManager() {
             }
             var cwd = eplugin ? eplugin.rfs : path.join(__dirname, plugin);
             if (!self.getConfig("api").offline_mode) {
-                exec('sudo npm update --unsafe-perm', {cwd: cwd}, function(error2) {
+                exec('npm update --unsafe-perm', {cwd: cwd}, function(error2) {
                     if (error2) {
                         errors = true;
                         console.log('error: %j', error2);
